@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCC 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2E5C8A;
+            --secondary: #E07856;
+            --accent-green: #7FB539;
+            --accent-purple: #B83B6F;
+            --light-blue: #4A9FD8;
+            --dark: #1a1a1a;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --text: #333333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: white;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* General Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Preamble */
+        .preamble {
+            background: var(--light-gray);
+        }
+
+        .preamble-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .preamble-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Call for Papers */
+        .call-for-papers {
+            background: white;
+        }
+
+        .cfp-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cfp-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cfp-deadline {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .cfp-deadline strong {
+            display: block;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cfp-guidelines {
+            list-style-position: inside;
+        }
+
+        .cfp-guidelines li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Tracks Section */
+        .tracks {
+            background: white;
+        }
+
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: justify;
+        }
+
+        .track-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s;
+        }
+
+        .track-card:hover {
+            box-shadow: 0 8px 16px rgba(224, 120, 86, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .track-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .track-card ul {
+            list-style-position: inside;
+            color: #666;
+        }
+
+        .track-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pre-Conference Activities */
+        .activities {
+            background: var(--light-gray);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .activity-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .activity-dates {
+            background: var(--light-gray);
+            padding: 0.75rem;
+            border-radius: 4px;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Partners */
+        .collaborators {
+    padding: 60px 0;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.collaborators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 40px;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.collaborator-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collaborator-item img {
+    max-width: 140px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.collaborator-item img:hover {
+    transform: scale(1.05);
+}
+
+        /* Sponsorship */
+        .sponsorship {
+            background: var(--light-gray);
+        }
+
+        .sponsorship-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sponsor-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--medium-gray);
+            transition: all 0.3s;
+        }
+
+        .sponsor-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .tier-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .tier-price {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .tier-benefits {
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .tier-benefits li {
+            margin-bottom: 0.75rem;
+            color: #666;
+            list-style-position: inside;
+        }
+
+        /* Organizing Committee */
+        .committee {
+            background: var(--light-gray);
+        }
+
+        .committee-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .committee-row {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .committee-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .member-role {
+            color: var(--secondary);
+            font-size: 0.95rem;
+        }
+
+        .member-contact {
+            color: #666;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .committee-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .member-contact {
+                white-space: normal;
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* Contact Form */
+        .contact {
+            background: var(--light-gray);
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            height: fit-content;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: bold;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 0.75rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .contact-form .btn {
+            margin-top: 0.5rem;
+            padding: 0.75rem 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact > .container > div {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+
+            .contact-info {
+                border-left: none;
+                border-top: 4px solid var(--primary);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .cfp-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <img src="ncc-logo.png" alt="NCC logo" style="height: 3.0rem;">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#papers">Call for Papers</a></li>
+                <li><a href="#activities">Pre-Conference</a></li>
+                <li><a href="#collaborators">Partners</a></li>
+                <li><a href="#committee">Committee</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 style="color:#e55a2b;">The 10th National Conference on Communications (NCC 2026)</h1>
+            <p>Conference Theme:</p>
+            <p><i><b>“Accelerating Market-Driven Innovation for Uganda's Development”</b></i></p>
+            <p style="font-size: 1rem; opacity: 0.9;"><b>24th - 26th June, 2026</b></p>
+            <div class="cta-buttons">
+                <a href="#papers" class="btn btn-primary">Submit a Paper</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preamble -->
+    <section class="preamble" id="about">
+        <div class="container">
+            <h2>About NCC 2026</h2>
+            <div class="preamble-content">
+                <p style="text-align: justify;">
+                   The Uganda Communications Commission (UCC), in collaboration with Makerere University, is pleased to announce the 10th National Conference on Communications (NCC 2026). This milestone edition marks a decade of fostering research, innovation, and knowledge exchange within Uganda's ICT ecosystem. 
+
+                </p>
+                <p style="text-align: justify;">
+                    Since its inception in 2010, the NCC has evolved into Uganda's premier platform for presenting peer-reviewed research, facilitating policy dialogue, and showcasing homegrown ICT solutions. The conference brings together academia, industry, government, and students to address the most pressing challenges and opportunities in Uganda's communications sector.
+
+                </p>
+                <p style="text-align: justify;">
+                    The 2026 theme, “Accelerating Market-Driven Innovation for Uganda’s Development,” emphasizes the critical need to align research and innovation with market realities and national development priorities. This theme reflects Uganda’s commitment to leveraging ICTs as a catalyst for achieving the Uganda Vision 2040 and the objectives of the National Development Plan IV (NDP IV).
+
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call for Papers -->
+    <section class="call-for-papers" id="papers">
+        <div class="container">
+            <h2>Call for Papers</h2>
+            
+            <div style="margin-bottom: 3rem;">
+                <div>
+                <h3>Conference Tracks and Sub-themes</h3>
+                <p style="margin-bottom: 2rem;">Papers are invited across the following thematic tracks. Each track encompasses multiple sub-themes to encourage comprehensive exploration of market-driven innovation in Uganda’s communications sector:</p>
+                <div class="tracks-grid">
+                    <div class="track-card">
+                        <h4>Track 1: Digital Infrastructure, Connectivity & Future Networks</h4>
+                        <p><b>Focus: </b>Innovations in physical and logical network infrastructure and technologies that enhance national connectivity and digital access.</p>
+                        <p><b>Sub-themes:</b></p>
+                        <ul>
+                            <li>5G and beyond: deployment strategies, use cases, business models for Uganda</li>
+                            <li>Rural connectivity and last-mile technologies</li>
+                            <li>Spectrum management and efficiency (sharing, policy frameworks)</li>
+                            <li>Infrastructure sharing and cost optimization</li>
+                            <li>Satellite & LEO communications for broader access</li>
+                            <li>Network resilience, disaster recovery, and energy-efficient systems</li>
+                            <li>Green & energy-efficient wireless networks</li>
+                            <li>Physical layer security and secure wireless communications</li>
+                        </ul>
+                    </div>
+
+                    <div class="track-card">
+                        <h4>Track 2: Digital Financial Services, FinTech & Economic Inclusion</h4>
+                        <p><b>Focus: </b>Technologies transforming financial access, inclusion, trust, and digital economic participation.</p>
+                        <p><b>Sub-themes:</b></p>
+                        <ul>
+                            <li>Mobile money ecosystem, interoperability & agent networks</li>
+                            <li>Digital lending, credit scoring, and alternative finance</li>
+                            <li>Blockchain & crypto for finance and supply chains</li>
+                            <li>Fraud/security in e-finance services</li>                           
+                            <li>Regulatory technology (RegTech) & compliance</li>
+                            <li>Financial inclusion for women, youth & underserved communities</li>
+                        </ul>
+                    </div>
+
+                    <div class="track-card">
+                        <h4>Track 3: Digital Content, Media, Broadcasting & Creative Innovation</h4>
+                        <p><b>Focus: </b>The evolving media landscape, content creation, distribution platforms, and creative digital experiences.</p>
+                        <p><b>Sub-themes:</b></p>
+                        <ul>
+                            <li>Digital terrestrial television (DTT) & digital migration optimization</li>
+                            <li>OTT services, streaming platforms, and audience analytics</li>
+                            <li>Community broadcasting innovations</li>
+                            <li>Digital advertising & market insights</li>
+                            <li>Immersive media (VR/AR/360° content experiences)</li>
+                        </ul>
+                    </div>
+
+                    <div class="track-card">
+                        <h4>Track 4: Artificial Intelligence, Data Science & Trustworthy Technology</h4>
+                        <p><b>Focus: </b>AI, data analytics, ethical considerations, language computing, and secure digital systems.</p>
+                        <p><b>Sub-themes:</b></p>
+                        <ul>
+                            <li>AI applications across sectors (health, agriculture, governance, education, etc)</li>
+                            <li>NLP for Ugandan/local languages</li>
+                            <li>Computer vision & contextual intelligent systems</li>
+                            <li>Big data for policy, planning & urban analytics</li>
+                            <li>Ethical AI frameworks, data privacy & protection</li>
+                            <li>AI-driven cybersecurity and threat detection</li>
+                        </ul>
+                    </div>
+
+                    <div class="track-card">
+                        <h4>Track 5: Smart Societies: E-Government, Urban Innovation & Public Services</h4>
+                        <p><b>Focus: </b>Digital transformation of public services, smart city frameworks, participatory governance, and urban tech.</p>
+                        <p><b>Sub-themes:</b></p>
+                        <ul>
+                            <li>E-government platforms, digital IDs & service delivery</li>
+                            <li>Smart city technologies (transport, energy, water, waste, GIS)</li>
+                            <li>Citizen engagement and digital participatory governance</li>
+                            <li>Rural public service digitalization</li>
+                        </ul>
+                    </div>
+
+                    <div class="track-card">
+                        <h4>Track 6: ICT for Social Impact: Health, Education & Human Development</h4>
+                        <p><b>Focus: </b>ICT innovations that directly support wellbeing, learning, skills development, inclusion, and social systems.</p>
+                        <p><b>Sub-themes:</b></p>
+                        <ul>
+                            <li>Telemedicine, remote monitoring & digital health records</li>
+                            <li>mHealth solutions, epidemic surveillance & digital mental health</li>
+                            <li>E-learning platforms, digital literacy & coding education</li>
+                            <li>EdTech innovations (adaptive learning, OERs, MOOCs)</li>
+                            <li>Digital skills development for employment & entrepreneurship</li>
+                            <li>Assistive technologies for inclusive participation</li>
+                        </ul>
+                    </div>
+                     <div class="track-card">
+                        <h4>Track 7: Agriculture, Environmental Resilience & Digital Empowerment</h4>
+                        <p><b>Focus: </b>ICT’s role in enhancing agricultural productivity, sustainability, and climate resilience.</p>
+                        <p><b>Sub-themes:</b></p>
+                        <ul>
+                            <li>Precision farming, IoT sensors & smart agritech</li>
+                            <li>Agricultural market systems, digital supply chains & traceability</li>
+                            <li>Weather & climate information services for farmers</li>
+                            <li>Drones and remote sensing for crop monitoring</li>
+                            <li>Digital extension services and farmer training</li>
+                        </ul>
+                    </div>
+                     <div class="track-card">
+                        <h4>Track 8: Policy, Regulation, Cybersecurity & Innovation Ecosystems</h4>
+                        <p><b>Focus: </b>The frameworks that enable safe, inclusive, competitive, and sustainable digital transformation as well as technology ventures.</p>
+                        <p><b>Sub-themes:</b></p>
+                        <ul>
+                            <li>ICT policy, regulation & reform (telecoms, digital rights)</li>
+                            <li>Universal service/access funds, consumer protection & competition policy</li>
+                            <li>Cybersecurity, privacy protection & digital trust</li>
+                            <li>Cybercrime, cloud security & secure software development</li>
+                            <li>Innovation ecosystems: startups, incubators, investment & local tech hubs</li>
+                            <li>Intellectual property, commercialization & scaling sustainable ventures</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                <h3>Submission Guidelines</h3>
+                <p style="margin-bottom: 1.5rem;">We invite researchers, practitioners, innovators, policymakers, and students to submit original research papers, case studies, and technical reports that contribute to advancing Uganda’s digital transformation agenda.</p>
+                
+                <div style="background: var(--light-gray); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <p style="margin-bottom: 1rem;"><strong>Types of Submissions:</strong></p>
+                    <p>We welcome the following types of submissions:</p>
+                    <ul class="cfp-guidelines" style="margin-bottom: 1rem;">
+                        <li><b>Full Research Papers:</b> Original research contributions presenting novel methodologies, implementations, or findings (maximum of 8 pages)</li>
+                        <li><b>Extended Abstract:</b> Work-in-progress, preliminary results, or focused contributions (3-4 pages)</li>
+                        <li><b>Industry Case Studies:</b> Real-world deployments, implementations, and lessons learned from industry practice (4-6 pages)</li>
+                        <li><b>Policy and Position Papers:</b> Analysis of policy issues, regulatory frameworks, or strategic perspectives (4-6 pages)</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--light-gray); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+    
+    <p style="margin-bottom: 1rem;"><strong>Paper Formatting Requirements:</strong></p>
+    
+    <ul class="cfp-guidelines" style="margin-bottom: 1rem;">
+        <li>Papers must be written in English</li>
+
+        <li>
+            Use the official NCC 2026 paper template 
+            (<a href="conference-template-letter.docx" download>Download Word Template</a> | 
+            <a href="conference-latex-template.zip" download>Download LaTeX Template</a>). 
+            Do not change the paper size, font type or font size in the templates.
+        </li>
+
+        <li>Include title, author names, affiliations, abstract (150–250 words), and 4–6 keywords.</li>
+    </ul>
+
+</div>
+
+                <div style="background: var(--light-gray); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <p style="margin-bottom: 1rem;"><strong>Review Process:</strong></p>
+                    <p>All submissions will undergo a rigorous peer-review process:</p>
+                    <ul class="cfp-guidelines" style="margin-bottom: 1rem;">
+                        <li>Each paper will be reviewed by at least two independent reviewers</li>
+                        <li>Review criteria include originality, technical quality, relevance to conference theme, clarity of presentation, and potential impact</li>
+                        <li>Authors will be notified of acceptance, revision requirements, or rejection</li>
+                        <li>Accepted papers may be recommended for journal publication in selected partner journals</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--light-gray); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <p style="margin-bottom: 1rem;"><strong>Publication and Presentation:</strong></p>
+                    <ul class="cfp-guidelines" style="margin-bottom: 1rem;">
+                        <li>All accepted papers will be published in the NCC 2026 conference proceedings</li>
+                        <li>Selected high-quality papers will be recommended for publication in partner academic journals</li>
+                        <li>At least one author of each accepted paper must register to attend the conference</li>
+                        <li>Authors will present their work in oral or poster sessions</li>
+                    </ul>
+                </div>
+
+                <h3>Important Dates</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+                    <thead>
+                        <tr style="background: var(--primary); color: white;">
+                            <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Milestone</th>
+                            <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: white;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Call for Papers Opens</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Wednesday, February 18, 2026</strong></td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Abstract Submission Deadline (Optional)</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Friday, March 21, 2026</strong></td>
+                        </tr>
+                        <tr style="background: var(--light-gray);">
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Full Paper Submission Deadline</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Friday, May 1, 2026</strong></td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Review Results Notification</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Friday, May 22, 2026</strong></td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Camera-Ready Paper Submission</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Friday, June 5, 2026</strong></td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Author Registration Deadline</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>Friday, June 15, 2026</strong></td>
+                        </tr>
+                        <tr style="background: var(--light-gray);">
+                            <td style="padding: 1rem; border: 1px solid #ddd;">Conference Dates</td>
+                            <td style="padding: 1rem; border: 1px solid #ddd;"><strong>June 24-26, 2026</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><i><b>Note: All deadlines are at 23:59 East Africa Time (EAT). Late submissions will not be considered.</b></i></p><br><br>
+
+                <div style="background: var(--secondary); color: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; text-align: center;">
+                    <p style="margin-bottom: 0.5rem; font-size: 1.1rem;"><strong>Submission Platform</strong></p>
+                    <p>All papers must be submitted electronically through the conference submission portal:</p>
+                    <p style="margin-top: 0.75rem;"><a href="https://easychair.org/conferences/?conf=ncc2026" target="_blank" style="color: white; text-decoration: underline; font-weight: bold;">https://easychair.org/conferences/?conf=ncc2026</a></p>
+                    <p>Authors will need to create an account on the submission system.</p>
+                    <p> Download the official NCC 2026 paper template 
+            (<a href="conference-template-letter.docx" download>Download Word Template</a> | 
+            <a href="conference-latex-template.zip" download>Download LaTeX Template</a>). </p>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+
+
+    <!-- Pre-Conference Activities -->
+    <section class="activities" id="activities">
+        <div class="container">
+            <h2>Pre-Conference Activities</h2>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <h4>Publishing Masterclasses</h4>
+                    <p>Learn from experienced editors and publishers about getting your research published in top-tier journals and conferences. Covers peer review processes, writing techniques, and publication strategies.</p>
+                    <div class="activity-dates">Dates to be Communicated</div>
+                </div>
+
+                <div class="activity-card">
+                    <h4>School ICT Clubs Innovation Competition</h4>
+                    <p>A platform for high school students across the different parts of the country to showcase innovative ICT projects. Winners receive recognition, prizes, and opportunities to present at the main conference.</p>
+                    <div class="activity-dates">Dates to be Communicated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="collaborators" id="collaborators">
+    <div class="container">
+        <h2>Our Partners</h2>
+
+        <div class="collaborators-grid">
+
+            <div class="collaborator-item">
+                <img src="ucc-logo.png" alt="UCC logo">
+            </div>
+
+            <div class="collaborator-item">
+                <img src="mak-logo.jpg" alt="Makerere logo">
+            </div>
+
+            <div class="collaborator-item">
+                <img src="renu-logo.jpg" alt="RENU logo">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Organizing Committee -->
+    <section class="committee" id="committee">
+        <div class="container">
+            <h2>Organizing Committee</h2>
+            <div class="committee-list">
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Prof. Moses Musinguzi</div>
+                    </div>
+                   <div class="member-role">Chief Patron</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Dr. Abubakar Wasswa Matovu</div>
+                    </div>
+                   <div class="member-role">General Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Dr. Roseline N. Akol</div>
+                    </div>
+                   <div class="member-role">General Co-Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Dr. Edwin Mugume</div>
+                    </div>
+                   <div class="member-role">Technical Programme Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Dr. Tonny Ssetumba</div>
+                    </div>
+                   <div class="member-role">Technical Programme Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Dr. Jane K. Namaganda</div>
+                    </div>
+                   <div class="member-role">Finance Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Mr. Frank Ssemakula</div>
+                    </div>
+                   <div class="member-role">Student Activities and ICT Clubs Innovations Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Mr. Paul Kyoma</div>
+                    </div>
+                   <div class="member-role">Local Arrangements Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Ms. Harriet Musinguzi</div>
+                    </div>
+                   <div class="member-role">Publicity and Website Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Ms. Agatha Turyagyenda</div>
+                    </div>
+                   <div class="member-role">Virtual Platform Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Dr. Jonathan Serugunda</div>
+                    </div>
+                   <div class="member-role">Industry Liaison Chair</div>
+                </div>
+                <div class="committee-row">
+                    <div class="committee-info">
+                        <div class="member-name">Dr. Andrew Katumba</div>
+                    </div>
+                   <div class="member-role">NCC Conference Proceedings Chair</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 3rem;">Have questions about paper submission, pre-conference activities, or partnership opportunities? Contact us below.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1000px; margin: 0 auto;">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 1.5rem;">Contact Information</h3>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <p style="font-weight: bold; color: var(--primary); margin-bottom: 0.5rem;">Email</p>
+                        <p><a href="mailto:ncc2026@mak.ac.ug" style="color: var(--primary); text-decoration: none;">ncc2026@mak.ac.ug</a></p>
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <p style="font-weight: bold; color: var(--primary); margin-bottom: 0.5rem;">UCC Website</p>
+                        <p><a href="mailto:ncc2026@mak.ac.ug" style="color: var(--primary); text-decoration: none;">http://www.ucc.co.ug</a></p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p style="font-weight: bold; color: var(--primary); margin-bottom: 0.5rem;">Mobile</p>
+                        <p>+256 756 659968</p>
+                    </div>
+
+
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Send us a Message</h3>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 NCC 2026 - The 10th National Conference on Communications. All rights reserved.</p>
+            <p>Email: ncc2026@mak.ac.ug | Phone: +256 756 659968</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#papers">Call for Papers</a>
+                <a href="#activities">Pre-Conference</a>
+                <a href="#committee">Committee</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
