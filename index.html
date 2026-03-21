@@ -343,13 +343,41 @@
         }
 
         .deadline-note {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            text-align: center;
-            font-size: 0.95rem;
-            color: #555;
+            max-width: 900px;
+            margin: 1.5rem auto 2rem;
+            padding: 1.2rem 1.4rem;
+
+            background: linear-gradient(
+                90deg,
+                rgba(224, 120, 86, 0.12),
+                rgba(224, 120, 86, 0.05)
+            );
+
+            border-left: 6px solid var(--secondary);
+            border-radius: 10px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+
+            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
         }
 
+        .note-header {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .note-item {
+            line-height: 1.5;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .note-item strong {
+            color: var(--primary);
+        }
         /* =========================
            11. TRACKS
         ========================= */
@@ -390,6 +418,65 @@
             margin-bottom: 0.5rem;
         }
 
+        .dates-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .date-card {
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .date-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .date-label {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+            line-height: 1.4;
+        }
+
+        .date-value {
+            color: var(--secondary);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .featured-date-card {
+            border-left: 5px solid var(--secondary);
+            background: rgba(224, 120, 86, 0.06);
+        }
+
+        .deadline-note {
+            max-width: 900px;
+            margin: 1rem auto 2rem;
+            padding: 1rem 1.2rem;
+            background: rgba(224, 120, 86, 0.08);
+            border-left: 5px solid var(--secondary);
+            border-radius: 8px;
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .dates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* =========================
            12. ACTIVITIES
         ========================= */
@@ -397,40 +484,156 @@
             background: var(--light-gray);
         }
 
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .activities-intro {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 2rem;
+            color: #666;
+        }
+
+        .activities-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .activity-card {
-            background: var(--white);
+            background: white;
             padding: 2rem;
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-sm);
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
         }
 
-        .activity-card h4 {
+        .masterclass-card {
+            border-top: 5px solid var(--secondary);
+        }
+
+        .masterclass-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .masterclass-header h4 {
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.35rem;
+            margin: 0;
         }
 
-        .activity-card p {
+        .masterclass-badge {
+            background: rgba(224, 120, 86, 0.12);
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+        }
+
+        .masterclass-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.2rem;
+        }
+
+        .masterclass-description {
+            color: #666;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            max-width: 700px;
+        }
+
+        .mc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 1rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .mc-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .mc-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(46, 92, 138, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.05rem;
+        }
+
+        .online-icon {
+            background: rgba(184, 59, 111, 0.12);
+        }
+
+        .mc-body {
+            min-width: 0;
+        }
+
+        .mc-date {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.2rem;
+        }
+
+        .mc-venue {
+            color: #555;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .mc-venue.online {
+            color: var(--accent-purple);
+            font-weight: 700;
+        }
+
+        .featured-activity-card {
+            border-left: 5px solid var(--primary);
+        }
+
+        .featured-activity-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.9rem;
+            font-size: 1.25rem;
+        }
+
+        .featured-activity-card p {
             color: #666;
             margin-bottom: 1rem;
             text-align: justify;
         }
 
         .activity-dates {
+            display: inline-block;
             background: var(--light-gray);
-            padding: 0.75rem;
-            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
             color: var(--secondary);
             font-weight: bold;
         }
 
+        @media (max-width: 768px) {
+            .masterclass-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-card {
+                padding: 1.5rem;
+            }
+        }
         /* =========================
            13. PARTNERS
         ========================= */
@@ -502,6 +705,42 @@
         .member-role {
             color: var(--secondary);
             font-size: 0.95rem;
+        }
+
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .committee-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+
+            border-left: 4px solid var(--primary);
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+            transition: all 0.25s ease;
+        }
+
+        .committee-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+        }
+
+        .member-name {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            color: var(--secondary);
         }
 
         /* =========================
@@ -694,6 +933,156 @@
 
         .dates-table tbody tr:nth-child(even) {
             background: var(--light-gray);
+        }
+
+        .reveal-card {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .featured-date-card {
+            border-left: none;
+            border-top: 4px solid var(--secondary);
+            background: rgba(224, 120, 86, 0.08);
+        }
+
+        .dates-modern {
+            position: relative;
+            max-width: 900px;
+            margin: 1.5rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            padding-left: 1.2rem;
+        }
+
+        /* subtle vertical line */
+        .dates-modern::before {
+            content: "";
+            position: absolute;
+            left: 1.9rem;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 2px;
+            background: var(--medium-gray);
+            opacity: 0.8;
+        }
+
+        .date-row {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+
+            padding: 1rem 1.25rem;
+            padding-left: 1rem;
+            background: white;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            z-index: 1;
+        }
+
+        .date-row:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .date-left {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            min-width: 0;
+        }
+
+        .date-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(46, 92, 138, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .date-label {
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .date-value {
+            font-weight: 600;
+            color: #444;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        /* final highlighted row */
+        .featured-date {
+            border-left: none;
+            border-top: 4px solid var(--secondary);
+            background: rgba(224, 120, 86, 0.08);
+        }
+
+        .featured-icon {
+            background: rgba(224, 120, 86, 0.16);
+        }
+
+        /* note box */
+        .deadline-note {
+            max-width: 900px;
+            margin: 1rem auto 2rem;
+            padding: 1rem 1.2rem;
+            background: rgba(224, 120, 86, 0.08);
+            border-left: 5px solid var(--secondary);
+            border-radius: 8px;
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* mobile */
+        @media (max-width: 768px) {
+            .dates-modern {
+                padding-left: 0;
+            }
+
+            .dates-modern::before {
+                display: none;
+            }
+
+            .date-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .date-value {
+                white-space: normal;
+                text-align: left;
+                padding-left: 2.7rem;
+            }
         }
 
         /* =========================
@@ -1020,9 +1409,21 @@
                 </p>
             </div>
 
-            <p class="deadline-note">
-                <i><b>Note:</b> All deadlines are at 23:59 PM East Africa Time (EAT). Late submissions will not be considered.</i>
-            </p>
+            <div class="deadline-note">
+                <div class="note-header">⚠️ Important Submission Notes</div>
+
+                <div class="note-item">
+                    <strong>Time:</strong> All deadlines are at <b>23:59 EAT (East Africa Time)</b>.
+                </div>
+
+                <div class="note-item">
+                    <strong>Policy:</strong> Late submissions will <b>not be considered</b>.
+                </div>
+
+                <div class="note-item">
+                    <strong>Integrity:</strong> All submitted papers will undergo a <b>plagiarism check</b> before review.
+                </div>
+            </div>
 
             <div class="mb-3">
                 <h3>Conference Tracks and Sub-themes</h3>
@@ -1194,75 +1595,149 @@
                 </ul>
             </div>
 
-            <h3>Important Dates</h3>
-            <div class="table-wrapper">
-                <table class="dates-table">
-                    <thead>
-                        <tr>
-                            <th>Milestone</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Milestone">Call for Papers Opens</td>
-                            <td data-label="Date"><strong>Wednesday, February 18, 2026</strong></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Milestone">Abstract Submission Deadline (Optional)</td>
-                            <td data-label="Date"><strong>Friday, March 21, 2026</strong></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Milestone">Full Paper Submission Deadline</td>
-                            <td data-label="Date"><strong>Friday, May 1, 2026</strong></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Milestone">Review Results Notification</td>
-                            <td data-label="Date"><strong>Friday, May 22, 2026</strong></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Milestone">Camera-Ready Paper Submission</td>
-                            <td data-label="Date"><strong>Friday, June 5, 2026</strong></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Milestone">Author Registration Deadline</td>
-                            <td data-label="Date"><strong>Friday, June 15, 2026</strong></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Milestone">Conference Dates</td>
-                            <td data-label="Date"><strong>June 24–26, 2026</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="masterclass-header">
+                <h3>Important Dates</h3>
+                <span class="masterclass-badge">7 Milestones</span>
+            </div>
+            <div class="dates-modern">
+                <div class="date-row reveal-card">
+                    <div class="date-left">
+                        <div class="date-icon">📅</div>
+                        <span class="date-label">Call for Papers Opens</span>
+                    </div>
+                    <span class="date-value">Wednesday, February 18, 2026</span>
+                </div>
+
+                <div class="date-row reveal-card">
+                    <div class="date-left">
+                        <div class="date-icon">📅</div>
+                        <span class="date-label">Abstract Submission Deadline (Optional)</span>
+                    </div>
+                    <span class="date-value">Friday, March 21, 2026</span>
+                </div>
+
+                <div class="date-row reveal-card">
+                    <div class="date-left">
+                        <div class="date-icon">📅</div>
+                        <span class="date-label">Full Paper Submission Deadline</span>
+                    </div>
+                    <span class="date-value">Friday, May 1, 2026</span>
+                </div>
+
+                <div class="date-row reveal-card">
+                    <div class="date-left">
+                        <div class="date-icon">📅</div>
+                        <span class="date-label">Review Results Notification</span>
+                    </div>
+                    <span class="date-value">Friday, May 22, 2026</span>
+                </div>
+
+                <div class="date-row reveal-card">
+                    <div class="date-left">
+                        <div class="date-icon">📅</div>
+                        <span class="date-label">Camera-Ready Paper Submission</span>
+                    </div>
+                    <span class="date-value">Friday, June 5, 2026</span>
+                </div>
+
+                <div class="date-row reveal-card">
+                    <div class="date-left">
+                        <div class="date-icon">📅</div>
+                        <span class="date-label">Author Registration Deadline</span>
+                    </div>
+                    <span class="date-value">Friday, June 15, 2026</span>
+                </div>
+
+                <div class="date-row featured-date reveal-card">
+                    <div class="date-left">
+                        <div class="date-icon featured-icon">⭐</div>
+                        <span class="date-label">Conference Dates</span>
+                    </div>
+                    <span class="date-value">June 24–26, 2026</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Pre-Conference Activities -->
     <section class="activities" id="activities">
-        <div class="container">
-            <h2>Pre-Conference Activities</h2>
+    <div class="container">
+        <h2>Pre-Conference Activities</h2>
 
-            <div class="activities-grid">
-                <div class="activity-card">
-                    <h4>Publishing Masterclasses</h4>
-                    <p>
-                        Learn from experienced editors and publishers about getting your research published in top-tier journals and conferences. Covers peer review processes, writing techniques, and publication strategies.
-                    </p>
-                    <div class="activity-dates">Dates to be Communicated</div>
+        <p class="activities-intro">
+            NCC 2026 will feature a series of pre-conference activities aimed at building research, publishing, and innovation capacity among students, researchers, and practitioners.
+        </p>
+
+        <div class="activities-stack">
+            <!-- Publishing Masterclasses -->
+            <div class="activity-card masterclass-card">
+                <div class="masterclass-header">
+                    <h4>Publishing Masterclass Series</h4>
+                    <span class="masterclass-badge">6 Sessions</span>
                 </div>
+                <p class="masterclass-description">Learn from experienced editors and publishers about getting your research published in top-tier journals and conferences. Covers peer review processes, writing techniques, and publication strategies. </p>
+                <div class="masterclass-grid">
+                    <div class="mc-item">
+                        <div class="mc-icon">📅</div>
+                        <div class="mc-body">
+                            <p class="mc-date">8th April 2026</p>
+                            <p class="mc-venue">📍 Makerere University</p>
+                        </div>
+                    </div>
 
-                <div class="activity-card">
-                    <h4>School ICT Clubs Innovation Competition</h4>
-                    <p>
-                        A platform for high school students across the different parts of the country to showcase innovative ICT projects. Winners receive recognition, prizes, and opportunities to present at the main conference.
-                    </p>
-                    <div class="activity-dates">Dates to be Communicated</div>
+                    <div class="mc-item">
+                        <div class="mc-icon">📅</div>
+                        <div class="mc-body">
+                            <p class="mc-date">10th April 2026</p>
+                            <p class="mc-venue">📍 Mbarara University of Science and Technology</p>
+                        </div>
+                    </div>
+
+                    <div class="mc-item">
+                        <div class="mc-icon online-icon">💻</div>
+                        <div class="mc-body">
+                            <p class="mc-date">13th April 2026</p>
+                            <p class="mc-venue online">Online</p>
+                        </div>
+                    </div>
+
+                    <div class="mc-item">
+                        <div class="mc-icon">📅</div>
+                        <div class="mc-body">
+                            <p class="mc-date">14th April 2026</p>
+                            <p class="mc-venue">📍 Gulu University</p>
+                        </div>
+                    </div>
+
+                    <div class="mc-item">
+                        <div class="mc-icon">📅</div>
+                        <div class="mc-body">
+                            <p class="mc-date">15th April 2026</p>
+                            <p class="mc-venue">📍 Busitema University</p>
+                        </div>
+                    </div>
+
+                    <div class="mc-item">
+                        <div class="mc-icon online-icon">💻</div>
+                        <div class="mc-body">
+                            <p class="mc-date">20th April 2026</p>
+                            <p class="mc-venue online">Online</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
+            <!-- School ICT Clubs Innovation Competition -->
+            <div class="activity-card featured-activity-card">
+                <h4>School ICT Clubs Innovation Competition</h4>
+                <p>
+                    A platform for high school students across the different parts of the country to showcase innovative ICT projects. Winners receive recognition, prizes, and opportunities to present at the main conference.
+                </p>
+                <div class="activity-dates">Dates to be Communicated</div>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- Partners -->
     <section class="collaborators" id="collaborators">
         <div class="container">
@@ -1285,91 +1760,69 @@
         <div class="container">
             <h2>Organizing Committee</h2>
 
-            <div class="committee-list">
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Prof. Moses Musinguzi</div>
-                    </div>
+            <div class="committee-grid">
+
+                <div class="committee-card">
+                    <div class="member-name">Prof. Moses Musinguzi</div>
                     <div class="member-role">Chief Patron</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Dr. Abubakar Wasswa Matovu</div>
-                    </div>
+                <div class="committee-card">
+                    <div class="member-name">Dr. Abubakar Wasswa Matovu</div>
                     <div class="member-role">General Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Dr. Roseline N. Akol</div>
-                    </div>
+                <div class="committee-card">
+                    <div class="member-name">Dr. Roseline N. Akol</div>
                     <div class="member-role">General Co-Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Dr. Edwin Mugume</div>
-                    </div>
+                <div class="committee-card">
+                    <div class="member-name">Dr. Edwin Mugume</div>
                     <div class="member-role">Technical Programme Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Dr. Tonny Ssetumba</div>
-                    </div>
+                <div class="committee-card">
+                    <div class="member-name">Dr. Tonny Ssetumba</div>
                     <div class="member-role">Technical Programme Co-Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Dr. Jane K. Namaganda</div>
-                    </div>
+                <div class="committee-card">
+                    <div class="member-name">Dr. Jane K. Namaganda</div>
                     <div class="member-role">Finance Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Mr. Frank Ssemakula</div>
-                    </div>
-                    <div class="member-role">Student Activities and ICT Clubs Innovations Chair</div>
+                <div class="committee-card">
+                    <div class="member-name">Mr. Frank Ssemakula</div>
+                    <div class="member-role">Student Activities Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Mr. Paul Kyoma</div>
-                    </div>
+                <div class="committee-card">
+                    <div class="member-name">Mr. Paul Kyoma</div>
                     <div class="member-role">Local Arrangements Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Ms. Harriet Musinguzi</div>
-                    </div>
-                    <div class="member-role">Publicity and Website Chair</div>
+                <div class="committee-card">
+                    <div class="member-name">Ms. Harriet Musinguzi</div>
+                    <div class="member-role">Publicity & Website Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Ms. Agatha Turyagyenda</div>
-                    </div>
+                <div class="committee-card">
+                    <div class="member-name">Ms. Agatha Turyagyenda</div>
                     <div class="member-role">Virtual Platform Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Dr. Jonathan Serugunda</div>
-                    </div>
+                <div class="committee-card">
+                    <div class="member-name">Dr. Jonathan Serugunda</div>
                     <div class="member-role">Industry Liaison Chair</div>
                 </div>
 
-                <div class="committee-row">
-                    <div class="committee-info">
-                        <div class="member-name">Dr. Andrew Katumba</div>
-                    </div>
-                    <div class="member-role">NCC Conference Proceedings Chair</div>
+                <div class="committee-card">
+                    <div class="member-name">Dr. Andrew Katumba</div>
+                    <div class="member-role">Proceedings Chair</div>
                 </div>
-            </div>
+
+</div>
         </div>
     </section>
 
@@ -1591,5 +2044,31 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const revealCards = document.querySelectorAll(".reveal-card");
+
+            const observer = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        const cards = Array.from(revealCards);
+                        const index = cards.indexOf(entry.target);
+
+                        setTimeout(function () {
+                            entry.target.classList.add("visible");
+                        }, index * 90);
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            revealCards.forEach(function (card) {
+                observer.observe(card);
+            });
+        });
+        </script>
 </body>
 </html>
