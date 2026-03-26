@@ -1514,15 +1514,9 @@ footer p {
         }
 
         .read-more-content {
-            max-width: 900px;
-            margin: 0 auto;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease;
-        }
-
-        .read-more-content.open {
-            max-height: 500px;
         }
 
         .read-more-btn {

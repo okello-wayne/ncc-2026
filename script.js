@@ -173,11 +173,15 @@ function toggleReadMore() {
     const content = document.getElementById("industry-more");
     const btn = document.querySelector(".read-more-btn");
 
-    content.classList.toggle("open");
+    if (!content || !btn) return;
 
     if (content.classList.contains("open")) {
-        btn.textContent = "Read less";
-    } else {
+        content.style.maxHeight = "0px";
+        content.classList.remove("open");
         btn.textContent = "Read more";
+    } else {
+        content.classList.add("open");
+        content.style.maxHeight = content.scrollHeight + "px";
+        btn.textContent = "Read less";
     }
 }
