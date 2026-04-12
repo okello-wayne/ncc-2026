@@ -186,11 +186,26 @@ function toggleReadMore() {
     }
 }
 
-const video = document.querySelector(".video-wrapper video");
-const overlay = document.querySelector(".video-overlay");
+const promoVideo = document.getElementById("promoVideo");
+const videoOverlay = document.getElementById("videoOverlay");
 
-if (video && overlay) {
-    video.addEventListener("play", () => {
-        overlay.style.display = "none";
+if (promoVideo && videoOverlay) {
+    videoOverlay.addEventListener("click", function () {
+        promoVideo.play();
+    });
+
+    promoVideo.addEventListener("play", function () {
+        videoOverlay.classList.add("hidden");
+    });
+
+    promoVideo.addEventListener("pause", function () {
+        if (!promoVideo.ended) {
+            videoOverlay.classList.remove("hidden");
+        }
+    });
+
+    promoVideo.addEventListener("ended", function () {
+        promoVideo.load();
+        videoOverlay.classList.remove("hidden");
     });
 }

@@ -92,12 +92,16 @@
             </p>
 
             <div class="video-wrapper">
-                <div class="video-overlay">▶ Watch NCC 2026 Promo</div>
+            <div class="video-overlay" id="videoOverlay">
+                <span class="video-play-icon">▶</span>
+                <span class="video-overlay-text">Watch NCC 2026 Promo</span>
+            </div>
 
-                <video controls poster="images/NCC poster.JPG">
-                    <source src="images/NCC 2026 promo video.mp4" type="video/mp4">
-                </video>
-</div>
+            <video controls poster="images/NCC poster.JPG" id="promoVideo">
+                <source src="images/NCC 2026 promo video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
         </div>
     </section>
 
