@@ -185,3 +185,12 @@ function toggleReadMore() {
         btn.textContent = "Read less";
     }
 }
+
+const video = document.querySelector(".video-wrapper video");
+const overlay = document.querySelector(".video-overlay");
+
+if (video && overlay) {
+    video.addEventListener("play", () => {
+        overlay.style.display = "none";
+    });
+}
