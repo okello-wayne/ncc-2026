@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
     /* Paper deadline countdown on call-for-papers page */
     startCountdown(
         "papers-countdown",
-        "2026-05-01T23:59:00+03:00",
+        "2026-05-15T23:59:00+03:00",
         "The paper submission deadline has passed."
     );
 });
