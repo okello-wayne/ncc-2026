@@ -157,14 +157,14 @@ document.addEventListener("DOMContentLoaded", function () {
     /* Conference countdown on home page */
     startCountdown(
         "conference-countdown",
-        "2026-06-24T00:00:00+03:00",
+        "2026-09-24T00:00:00+03:00",
         "The conference has started."
     );
 
     /* Paper deadline countdown on call-for-papers page */
     startCountdown(
         "papers-countdown",
-        "2026-05-15T23:59:00+03:00",
+        "2026-07-17T23:59:00+03:00",
         "The paper submission deadline has passed."
     );
 });

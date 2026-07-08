@@ -1732,3 +1732,48 @@ footer p {
                 line-height: 1.6;
                 text-align: justify;
             }
+
+                .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .schedule-table thead {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 0.9rem 1rem;
+            text-align: left;
+        }
+
+        .schedule-table tbody tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .schedule-table tbody tr {
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .schedule-table tbody tr:hover {
+            background: rgba(46, 92, 138, 0.06);
+        }
+
+        .schedule-table th:last-child,
+        .schedule-table td:last-child {
+            text-align: center;
+            width: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .schedule-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
